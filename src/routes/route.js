@@ -1,20 +1,29 @@
 const express = require('express');
-const abc = require('../introduction/intro')
+const logger=require('../logger/logger');
+const helper=require('../util/helper');
+const validator=require('../validator/formatter')
+
 const router = express.Router();
 
-router.get('/test-me', function (req, res) {
-    console.log('My batch is', abc.name)
-    abc.printName()
-    res.send('My second ever api!')
+router.get('/question1', function (req, res) {
+    console.log(logger.welcome())
+    res.send('1st question is done!')
+});
+
+router.get('/question2', function (req, res) {
+    console.log(helper.printDate())
+    console.log(helper.printMonth())
+     console.log(helper.getBatchInfo())
+    res.send('2nd question is done!')
+})
+
+router.get('/question3', function (req, res) {
+    console.log(validator.trim());
+    console.log(validator.toLowerCase());
+    console.log(validator.toUpperCase());
+    res.send('3rd question is done!')
 });
 
 
-router.get('/test-you', function(req, res){
-    res.send('This is the second routes implementation')
-})
-
-router.get('/give-me-students-data',function(req, res){
-
-})
 module.exports = router;
 // adding this comment for no reason
